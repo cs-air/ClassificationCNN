@@ -1,1 +1,44 @@
 # ClassificationCNN
+
+- This neural network is intended for the parking lot app
+- The current network that we will test is found from this website https://www.tensorflow.org/tutorials/images/deep_cnn
+  - Origionally it classified images into the following categories: airplane, automobile, bird, cat, deer, dog, frog, horse, ship and truck
+    - Remarks: 
+      - it does not have a category that will do pickup trucks ( if that becomes a problem we will work on a different network)
+      - automobiles do not overlap with trucks
+  - We have discarded all categories except automobile and truck
+    - We will either add a category called not car or output that the spot is empty when the system is not very confident there is a car
+  - It also has a peak performance of 86% accuracy but that might improve in our case
+  - The model follows the architecture described by Alex Krizhevsky, with a few differences in the top few layers.
+  - The layers are currently (in order):
+    - convolutional layer
+    - max pooling layer
+    - normalization layer
+    - convolutional layer
+    - normalization layer
+    - max pooling layer
+    - fully connected layer with rectified linear activation
+    - fully connected layer with rectified linear activation
+    - softmax linear transformation to produce logits
+  - We will train several networks to see what works best for our project
+  - One network will be :
+    - Convolutional layer
+    - max pooling layer
+    - normalization layer
+    - fully connected layer with rectified linear activation
+    - softmax linear transformation to produce logits
+  - Another will be:
+    - convolutional layer
+    - fully connected layer with rectified linear activation
+    - softmax linear transformation to produce logits
+  - Another will be:
+    - convolutional layer
+    - max pooling layer
+    - normalization layer
+    - convolutional layer
+    - fully connected layer with rectified linear activation
+    - softmax linear transformation to produce logits
+ - Things we will compare include: 
+  - accuracy
+  - learning rate
+  - total loss
