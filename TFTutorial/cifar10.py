@@ -265,9 +265,11 @@ def inference(images):
                                           stddev=1/192.0, wd=None)
     biases = _variable_on_cpu('biases', [NUM_CLASSES],
                               tf.constant_initializer(0.0))
+    # cross entropy, returns unnormalized logits
     softmax_linear = tf.add(tf.matmul(local4, weights), biases, name=scope.name)
     _activation_summary(softmax_linear)
 
+#softmax normalizes the data
   return tf.nn.softmax(softmax_linear)
 
 
@@ -377,6 +379,7 @@ def train(total_loss, global_step):
   return variables_averages_op
 
 
+#getting data set. We need to change
 def maybe_download_and_extract():
   """Download and extract the tarball from Alex's website."""
   dest_directory = FLAGS.data_dir
