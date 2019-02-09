@@ -62,7 +62,7 @@ def train():
     global_step = tf.train.get_or_create_global_step()
 
     # Get images and labels for CIFAR-10.
-    # Force input pipeline to CPU:0 to avoid operations sometimes ending up on
+    # Force input pipeline to CPU:0 to avoid ope rations sometimes ending up on
     # GPU and resulting in a slow down.
     with tf.device('/cpu:0'):
       images, labels = cifar10.distorted_inputs()
