@@ -239,19 +239,22 @@ def inference(images):
   #pool2
   pool2 = tf.nn.max_pool(norm2, ksize=[1, 3, 3, 1],
                          strides=[1, 2, 2, 1], padding='SAME', name='pool2')
-  print(pool2.shape)
-  exit()
 
   #local3
   with tf.variable_scope('local3') as scope:
     #Move everything into depth so we can perform a single matrix multiply.
     reshape = tf.reshape(pool2, [images.get_shape().as_list()[0], -1])
+    
+    print(reshape.shape)
     dim = reshape.get_shape()[1].value
+    print(dim)
     weights = _variable_with_weight_decay('weights', shape=[dim, 384],
                                           stddev=0.04, wd=0.004)
     biases = _variable_on_cpu('biases', [384], tf.constant_initializer(0.1))
     local3 = tf.nn.relu(tf.matmul(reshape, weights) + biases, name=scope.name)
     _activation_summary(local3)
+  print(local3.shape)
+  exit()
 
   #local4
   with tf.variable_scope('local4') as scope:
