@@ -133,14 +133,14 @@ def _generate_image_and_label_batch(image, label, min_queue_examples,
         capacity=min_queue_examples + 3 * batch_size)
         
   # Take out the images that are not automobiles or trucks
-  print("Hi")
-  print(labels)
-  for l in labels:
-    if (l != "automobile" or l != "truck"):
-      l = "nothing"
+  #print("Hi")
+  #print(label_batch)
+  #for l in label_batch:
+    #if (l != "automobile" or l != "truck"):
+      #l = "nothing"
         
-    print (labels)
-    return 0
+    #print (label_batch)
+    #return 0
   # Display the training images in the visualizer.
   tf.summary.image('images', images)
 
