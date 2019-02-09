@@ -207,6 +207,7 @@ def inference(images):
                                          wd=None)
     # parameters are the entire set of images, the weight decay kernel,
     # the stride ([0]=[3]=1 so it can work), and the type of padding algorithm used
+    print(images.shape)
     conv = tf.nn.conv2d(images, kernel, [1, 1, 1, 1], padding='SAME')
     print(conv.shape)
     exit()
