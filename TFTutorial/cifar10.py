@@ -258,8 +258,6 @@ def inference(images):
     biases = _variable_on_cpu('biases', [192], tf.constant_initializer(0.1))
     local4 = tf.nn.relu(tf.matmul(local3, weights) + biases, name=scope.name)
     _activation_summary(local4)
-  print(local4.shape)
-  exit()
 ##########################################
   # linear layer(WX + b),
   # We don't apply softmax here because
@@ -274,6 +272,8 @@ def inference(images):
     softmax_linear = tf.add(tf.matmul(local4, weights), biases, name=scope.name)
     _activation_summary(softmax_linear)
 
+  print(softmax_linear.shape)
+  exit()
 #softmax normalizes the data
   return tf.nn.softmax(softmax_linear)
 
