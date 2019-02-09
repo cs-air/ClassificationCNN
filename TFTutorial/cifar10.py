@@ -272,7 +272,7 @@ def inference(images):
     softmax_linear = tf.add(tf.matmul(local4, weights), biases, name=scope.name)
     _activation_summary(softmax_linear)
 
-  print(softmax_linear.shape)
+  print(softmax_linear[0])
   exit()
 #softmax normalizes the data
   return tf.nn.softmax(softmax_linear)
