@@ -220,8 +220,6 @@ def inference(images):
   #norm1
   norm1 = tf.nn.lrn(pool1, 4, bias=1.0, alpha=0.001 / 9.0, beta=0.75,
                     name='norm1')
-  print(norm1.shape)
-  exit()
 
   #conv2
   with tf.variable_scope('conv2') as scope:
@@ -234,6 +232,8 @@ def inference(images):
     pre_activation = tf.nn.bias_add(conv, biases)
     conv2 = tf.nn.relu(pre_activation, name=scope.name)
     _activation_summary(conv2)
+  print(conv2.shape)
+  exit()
 
   #norm2
   norm2 = tf.nn.lrn(conv2, 4, bias=1.0, alpha=0.001 / 9.0, beta=0.75,
