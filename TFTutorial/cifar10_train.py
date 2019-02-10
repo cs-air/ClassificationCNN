@@ -58,6 +58,7 @@ tf.app.flags.DEFINE_integer('log_frequency', 10,
 
 def train():
   """Train CIFAR-10 for a number of steps."""
+  #what is wrong?
   with tf.Graph().as_default():
     global_step = tf.train.get_or_create_global_step()
 
