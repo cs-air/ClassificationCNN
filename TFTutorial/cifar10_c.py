@@ -241,8 +241,7 @@ def inference(images):
   #with tf.variable_scope('local3') as scope:
     #Move everything into depth so we can perform a single matrix multiply.
     reshape = tf.reshape(conv1, [images.get_shape().as_list()[0], -1])
-    print(reshape.shape)
-    exit()
+    
     #dim = reshape.get_shape()[1].value
     #weights = _variable_with_weight_decay('weights', shape=[dim, 384],
                                         #stddev=0.04, wd=0.004)
@@ -263,8 +262,8 @@ def inference(images):
   # tf.nn.sparse_softmax_cross_entropy_with_logits accepts the unscaled logits
   # and performs the softmax internally for efficiency.
   with tf.variable_scope('softmax_linear') as scope:
-    weights = _variable_with_weight_decay('weights', [192, NUM_CLASSES],
-                                          stddev=1/192.0, wd=None)
+    weights = _variable_with_weight_decay('weights', [reshape.get_shape()[1].value, NUM_CLASSES],
+                                          stddev=1.0/reshape.get_shape()[1].value, wd=None)
     biases = _variable_on_cpu('biases', [NUM_CLASSES],
                               tf.constant_initializer(0.0))
     # cross entropy, returns unnormalized logits
