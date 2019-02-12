@@ -41,7 +41,7 @@ import time
 import numpy as np
 import tensorflow as tf
 
-import cifar10_c as cifar10
+import cifar10_cpn as cifar10
 
 FLAGS = tf.app.flags.FLAGS
 

@@ -266,7 +266,7 @@ def inference(images):
     biases = _variable_on_cpu('biases', [NUM_CLASSES],
                               tf.constant_initializer(0.0))
     # cross entropy, returns unnormalized logits
-    softmax_linear = tf.add(tf.matmul(norm1, weights), biases, name=scope.name)
+    softmax_linear = tf.add(tf.matmul(local3, weights), biases, name=scope.name)
     _activation_summary(softmax_linear)
 
 #softmax normalizes the data
